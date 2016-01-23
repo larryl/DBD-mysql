@@ -1885,12 +1885,15 @@ or in the L<DBI/prepare> method.  Statements created with 'async' set to
 true in prepare always run their queries asynchronously when L<DBI/execute>
 is called.  The driver also offers three additional methods:
 C<mysql_async_result>, C<mysql_async_ready>, and C<mysql_fd>.
+
 C<mysql_async_result> returns what do or execute would have; that is, the
 number of rows affected.  C<mysql_async_ready> returns true if
 C<mysql_async_result> will not block, and zero otherwise.  They both return
 C<undef> if that handle is not currently running an asynchronous query.
+
 C<mysql_fd> returns the file descriptor number for the MySQL connection; you
-can use this in an event loop.
+can use this in an event loop.  It returns -1 if there is no active database
+connection.
 
 Here's an example of how to use the asynchronous query interface:
 

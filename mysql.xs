@@ -624,7 +624,7 @@ int mysql_fd(dbh)
   CODE:
     {
         D_imp_dbh(dbh);
-        RETVAL = imp_dbh->pmysql->net.fd;
+        RETVAL = imp_dbh->pmysql->net.vio ? imp_dbh->pmysql->net.fd : -1;
     }
   OUTPUT:
     RETVAL

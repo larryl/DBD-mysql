@@ -240,3 +240,6 @@ $sth->finish;
 
 undef $sth;
 ok $dbh->disconnect;
+
+is $dbh->mysql_fd, -1;
+
